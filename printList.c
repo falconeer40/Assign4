@@ -27,7 +27,11 @@ void printList(struct contact_data *record, int start, int end){
                         state = toupper(record[start + j].last_name[0]);
                         printf("%c\n",state);
                     }
-                    printf("\t%d. %s\n",j + start + 1,record[start + j].last_name);
+                    if(record[start + j].first_name[0]){
+                        printf("\t%d. %s %s\n",j + start + 1,record[start + j].first_name ,record[start + j].last_name);
+                    } else {
+                        printf("\t%d. %s\n",j + start + 1,record[start + j].last_name);
+                    }
                 } else {
                     if(toupper(record[start + j].company_name[0]) != state){
                         state = toupper(record[start + j].company_name[0]);

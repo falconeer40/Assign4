@@ -24,26 +24,26 @@ int loadContacts(int k, struct contact_data **record)
         if(temp.first_name_posn){
             fseek(fptr, temp.first_name_posn, SEEK_SET);
             for(i = 0; (data[0][i] = fgetc(fptr)); i++);
-            strcpy(record[k]->first_name, data[0]);
+            strcpy((*record)[k].first_name, data[0]);
         }
         data[1][0] = '\0';
         if(temp.last_name_posn){
             fseek(fptr, temp.last_name_posn, SEEK_SET);
             for(i = 0; (data[1][i] = fgetc(fptr)); i++);
-            strcpy(record[k]->last_name, data[1]);
+            strcpy((*record)[k].last_name, data[1]);
         }
         data[2][0] = '\0';
         if(temp.company_name_posn){
             fseek(fptr, temp.company_name_posn, SEEK_SET);
             for(i = 0; (data[2][i] = fgetc(fptr)); i++);
-            strcpy(record[k]->company_name, data[2]);
+            strcpy((*record)[k].company_name, data[2]);
         }
         data[3][0] = '\0';
-        record[k]->phone_number = temp.phone_number;
+        (*record)[k].phone_number = temp.phone_number;
         if(temp.email_posn){
             fseek(fptr, temp.email_posn, SEEK_SET);
             for(i = 0; (data[3][i] = fgetc(fptr)); i++);
-            strcpy(record[k]->email, data[3]);
+            strcpy((*record)[k].email, data[3]);
         }
         k++;
         j = 0;
