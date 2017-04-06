@@ -41,7 +41,7 @@ int addContact(struct contact_data **record, int k){
     }while((sscanf(data[4],"%[^@]@%s",temp,temp) != 2 )|| (data[4][strlen(data[4]) - 5] != '.'));
 
     for(i = 0; i < 5; i++){
-        if(strlen(data[i]) > 0){
+        if(strlen(data[i]) > 1){
             data[i][strlen(data[i]) - 1] = '\0';
         }
     }
@@ -51,8 +51,8 @@ int addContact(struct contact_data **record, int k){
         printf("Action:");
         fgets(action,10,stdin);
         if(action[0] == 'S'){
-            k++;
             *record = realloc(*record, sizeof(struct contact_data[k+1]));
+            
             memset(*record + k, 0, sizeof(**record));
             strcpy((*record)[k].first_name, data[0]);
             strcpy((*record)[k].last_name, data[1]);
@@ -60,6 +60,7 @@ int addContact(struct contact_data **record, int k){
             (*record)[k].phone_number = phone_number;
             strcpy((*record)[k].email, data[4]);
             action[0] = 'R';
+            k++;
             if(k > 1){
                 qsort(*record, k, sizeof(struct contact_data), sortList);
             }

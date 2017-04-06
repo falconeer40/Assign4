@@ -11,6 +11,8 @@ void saveContacts(struct contact_data **record, int k){
     fptr = fopen("myContactsList.db", "w");
 
     for(i = 0; i < k; i++){
+        printf("%d",i);
+        memset(&ptr, 0, sizeof(struct contact));
         fseek(fptr, 0, SEEK_END);
         ptr.phone_number = record[i]->phone_number;
         ptr.first_name_posn = sizeof(struct contact) + ftell(fptr);

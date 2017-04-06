@@ -9,7 +9,6 @@ int main(){
     k = loadContacts(k, &record);
 /*        printf("\e[H\e[2J");*/
     k = displayContacts(k, &record);
-    printf("2");
     saveContacts(&record, k);
     return 0;
 }
